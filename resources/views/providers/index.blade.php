@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'List of Providers', 'pageSlug' => 'providers', 'section' => 'providers'])
+@extends('layouts.app', ['page' => 'List of Agents', 'pageSlug' => 'agents', 'section' => 'agents'])
 
 @section('content')
     <div class="row">
@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Providers</h4>
+                            <h4 class="card-title">Agents</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('providers.create') }}" class="btn btn-sm btn-primary">New Provider</a>
+                            <a href="{{ route('providers.create') }}" class="btn btn-sm btn-primary">New Agent</a>
                         </div>
                     </div>
                 </div>
