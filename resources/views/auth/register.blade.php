@@ -1,8 +1,8 @@
-@extends('layouts.app', ['class' => 'register-page', 'page' => 'Laravel Inventory', 'contentClass' => 'register-page', 'section' => 'auth'])
+@extends('layouts.app', ['class' => 'register-page', 'page' => 'Waste Stock Management', 'contentClass' => 'register-page', 'section' => 'auth'])
 
 @section('content')
     <div class="row">
-        <div class="col-md-7 ml-auto mr-auto">
+        <div class="col-md-8 ml-auto mr-auto">
             <div class="card card-register card-white">
                 <div class="card-header">
                     <img class="card-img" src="{{ asset('assets') }}/img/card-primary.png" alt="Card image">
