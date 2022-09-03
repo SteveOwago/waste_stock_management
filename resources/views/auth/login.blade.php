@@ -5,9 +5,8 @@
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
 
-            <div class="card card-login card-white">
-                <div class="card-header">
-                    <img src="{{ asset('assets') }}/img/card-primary.png" alt="">
+            <div class="card card-login">
+                <div class="card-header text-center mt-2">
                     <h1 class="card-title">Login</h1>
                 </div>
                 <div class="card-body">

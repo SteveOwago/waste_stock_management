@@ -10,7 +10,7 @@ function format_money($money)
 
     if(strpos($money, '-') !== false) {
         $formatted = explode('-', $money);
-        return "-\ KES $formatted[1]";
+        return "KES $formatted[1]";
     }
 
     return "KES $money";

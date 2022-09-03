@@ -17755,8 +17755,9 @@ Copyright (c) 2015 Daniel Eden
 
 .full-page.pricing-page, .full-page.login-page, .full-page.lock-page, .full-page.register-page {
   min-height: 100vh;
-  background: radial-gradient(#1e1e2f, #1e1e24);
+  background:  url('../img/background.jpg');
 }
+
 
 .full-page>.content {
   padding-bottom: 150px;
@@ -17782,16 +17783,17 @@ Copyright (c) 2015 Daniel Eden
 
 .login-page .card-login .card-header .card-title {
   position: relative;
-  font-size: 5em;
-  font-weight: 900;
+  align-items: center;
+  font-size: 3em;
+  font-weight: 500;
   color: #222a42;
-  text-transform: lowercase;
+  text-transform: uppercase;
   margin-left: -5px;
   z-index: 1;
 }
 
 .login-page .card-login .card-header {
-  padding: 0 0 100px;
+  padding: 0 0 50px;
   overflow: hidden;
 }
 
@@ -17830,10 +17832,10 @@ Copyright (c) 2015 Daniel Eden
 
 .card-register .card-header .card-title {
   position: relative;
-  font-size: 5em;
-  font-weight: 900;
+  font-size: 3em;
+  font-weight: 500;
   color: #222a42;
-  text-transform: lowercase;
+  text-transform: uppercase;
   margin-left: -5px;
   z-index: 1;
 }
@@ -17947,7 +17949,7 @@ Copyright (c) 2015 Daniel Eden
 
 .white-content.bd-docs .bd-example {
   background: linear-gradient(#f5f6fa, #f5f6fa);
-}  
+}
 
 .breadcrumb-item.active {
   color: rgba(34, 42, 66, 0.7);
