@@ -36,7 +36,7 @@ class TransactionController extends Controller
     {
         Carbon::setWeekStartsAt(Carbon::SUNDAY);
         Carbon::setWeekEndsAt(Carbon::SATURDAY);
-        
+
         $salesperiods = [];
         $transactionsperiods = [];
 
@@ -168,7 +168,7 @@ class TransactionController extends Controller
 
                 return redirect()
                     ->route('transactions.type', ['type' => 'income'])
-                    ->withStatus('Login successfully registered.');
+                    ->withStatus('Income successfully registered.');
 
             default:
                 return redirect()
@@ -177,7 +177,7 @@ class TransactionController extends Controller
         }
     }
 
-    /** 
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
