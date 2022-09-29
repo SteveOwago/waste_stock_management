@@ -24,7 +24,8 @@ class TransactionController extends Controller
             'income' => 'Income',
             'payment' => 'Payment',
             'expense' => 'Expense',
-            'transfer' => 'Transfer'
+            'transfer' => 'Transfer',
+            'deposit' => 'Deposit'
         ];
 
         $transactions = Transaction::latest()->paginate(25);
@@ -78,6 +79,9 @@ class TransactionController extends Controller
 
             case 'income':
                 return view('transactions.income.index', ['transactions' => Transaction::where('type', 'income')->latest()->paginate(25)]);
+
+            case 'deposit':
+                return view('transactions.deposit.index', ['transactions' => Transaction::where('type', 'deposit')->latest()->paginate(25)]);
         }
     }
 
@@ -102,6 +106,10 @@ class TransactionController extends Controller
 
             case 'income':
                 return view('transactions.income.create', [
+                    'payment_methods' => PaymentMethod::all(),
+                ]);
+            case 'deposit':
+                return view('transactions.deposit.create', [
                     'payment_methods' => PaymentMethod::all(),
                 ]);
         }
@@ -169,7 +177,12 @@ class TransactionController extends Controller
                 return redirect()
                     ->route('transactions.type', ['type' => 'income'])
                     ->withStatus('Income successfully registered.');
+            case 'deposit':
+                $transaction->create($request->all());
 
+                return redirect()
+                    ->route('transactions.type', ['type' => 'deposit'])
+                    ->withStatus('Deposit successfully registered.');
             default:
                 return redirect()
                     ->route('transactions.index')
@@ -201,6 +214,11 @@ class TransactionController extends Controller
 
             case 'income':
                 return view('transactions.income.edit', [
+                    'transaction' => $transaction,
+                    'payment_methods' => PaymentMethod::all(),
+                ]);
+            case 'deposit':
+                return view('transactions.deposit.edit', [
                     'transaction' => $transaction,
                     'payment_methods' => PaymentMethod::all(),
                 ]);
@@ -239,8 +257,11 @@ class TransactionController extends Controller
             case 'income':
                 return redirect()
                     ->route('transactions.type', ['type' => 'income'])
-                    ->withStatus('Login successfully updated.');
-
+                    ->withStatus('Income successfully updated.');
+            case 'deposit':
+                return redirect()
+                    ->route('transactions.type', ['type' => 'deposit'])
+                    ->withStatus('Deposit successfully updated.');
             default:
                 return redirect()
                     ->route('transactions.index')

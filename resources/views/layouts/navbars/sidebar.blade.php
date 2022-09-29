@@ -58,6 +58,12 @@
                                 <p>Payments</p>
                             </a>
                         </li>
+                        <li @if ($pageSlug == 'deposit') class="active " @endif>
+                            <a href="{{ route('transactions.type', ['type' => 'deposit'])  }}">
+                                <i class="tim-icons icon-notes"></i>
+                                <p>Deposit</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

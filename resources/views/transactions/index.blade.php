@@ -117,6 +117,7 @@
                         <a href="{{ route('transactions.create', ['type' => 'expense']) }}" class="btn btn-sm btn-primary">Expense</a>
                         <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Sale</a>
                         <a href="{{ route('transfer.create') }}" class="btn btn-sm btn-primary">Transfer</a>
+                        <a href="{{ route('transactions.create', ['type' => 'deposit']) }}" class="btn btn-sm btn-primary">Deposit</a>
                     </div>
                 </div>
             </div>
