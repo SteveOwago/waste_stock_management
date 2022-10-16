@@ -7,6 +7,11 @@ use App\Http\Requests\ProviderRequest;
 
 class ProviderController extends Controller
 {
+    public function __construct()
+    {
+
+        $this->middleware(['role:Admin','permission:agent-management']);
+    }
     /**
      * Display a listing of the Provs
      *

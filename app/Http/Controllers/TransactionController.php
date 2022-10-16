@@ -20,6 +20,7 @@ class TransactionController extends Controller
     public function __construct(Deposit $deposit)
     {
         $this->deposit = $deposit;
+        $this->middleware(['role:Admin','permission:transaction-management|deposit-management']);
     }
     /**
      * Display a listing of the resource.

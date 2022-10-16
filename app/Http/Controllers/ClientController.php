@@ -11,6 +11,10 @@ use App\Http\Requests\ClientRequest;
 
 class ClientController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:Admin','permission:client-management']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +46,7 @@ class ClientController extends Controller
     public function store(ClientRequest $request, Client $client)
     {
         $client->create($request->all());
-        
+
         return redirect()->route('clients.index')->withStatus('Successfully registered customer.');
     }
 

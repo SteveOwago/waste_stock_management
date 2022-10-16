@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:Admin','permission:inventory-management']);
+    }
     public function stats()
     {
         return view('inventory.stats', [

@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role_or_permission:Admin|users-management']);
+    }
     /**
      * Display a listing of the users
      *
@@ -28,7 +33,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Role::all();
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -42,7 +48,10 @@ class UserController extends Controller
     {
         $request->merge(['password' => Hash::make($request->get('password'))]);
 
-        User::create($request->all());
+        $user = User::create($request->all());
+        $role = $request->role_id;
+
+        $user->assignRole($role);
 
         return redirect()->route('users.index')->withStatus('User successfully created.');
     }
@@ -55,7 +64,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $roles = Role::all();
+        return view('users.edit', compact('user','roles'));
     }
 
     /**
@@ -74,6 +84,9 @@ class UserController extends Controller
         $request->except([$hasPassword ? '' : 'password']);
 
         $user->update($request->all());
+        $role = $request->role_id;
+
+        $user->assignRole($role);
 
         return redirect()->route('users.index')->withStatus('User successfully updated.');
     }

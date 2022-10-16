@@ -15,7 +15,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="card-body">
                         <form method="post" action="{{ route('users.update', $user) }}" autocomplete="off">
                             @csrf
@@ -32,6 +32,17 @@
                                     <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
                                     <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', $user->email) }}" required>
                                     @include('alerts.feedback', ['field' => 'email'])
+                                </div>
+                                <div class="form-group{{ $errors->has('role_id') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-email">{{ __('Role') }}</label>
+                                    <select name="role_id" id="" required class="form-control">
+                                        @forelse($roles as $role)
+                                            <option value="{{$role->id}}">{{strtoupper($role->name)}}</option>
+                                        @empty
+                                            <option value="">No Roles! Create Roles First.</option>
+                                        @endforelse
+                                    </select>
+                                    @include('alerts.feedback', ['field' => 'role_id'])
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>

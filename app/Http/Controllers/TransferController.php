@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TransferController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:Admin','permission:transaction-management|deposit-management']);
+    }
     /**
      * Display a listing of the resource.
      *

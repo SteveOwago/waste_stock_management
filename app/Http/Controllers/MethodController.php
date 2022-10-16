@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class MethodController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:Admin','permission:account-management']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class MethodController extends Controller
     public function index()
     {
         return view('methods.index', [
-            'methods' => PaymentMethod::paginate(15), 
+            'methods' => PaymentMethod::paginate(15),
             'month' => Carbon::now()->month
         ]);
     }
@@ -117,7 +121,7 @@ class MethodController extends Controller
     public function destroy(PaymentMethod $method)
     {
         $method->delete();
-        
+
         return back()->withStatus('Payment method successfully removed.');
     }
 }

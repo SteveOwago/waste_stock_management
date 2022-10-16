@@ -180,6 +180,18 @@
                                 <p>New user</p>
                             </a>
                         </li>
+                        <li @if ($pageSlug == 'roles') class="active " @endif>
+                            <a href="{{ route('roles.index')  }}">
+                                <i class="tim-icons icon-lock-circle"></i>
+                                <p>Roles</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'permissions') class="active " @endif>
+                            <a href="{{ route('permissions.index')  }}">
+                                <i class="tim-icons icon-key-25"></i>
+                                <p>Permissions</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
