@@ -28,13 +28,13 @@
                                 <tr>
                                     <td>{{ strtoupper($permission->name) }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                        <a href="{{ route('permissions.show', [$permission->id]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                             <i class="tim-icons icon-zoom-split"></i>
                                         </a>
-                                        <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit permission">
+                                        <a href="{{ route('permissions.edit', [$permission->id]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit permission">
                                             <i class="tim-icons icon-pencil"></i>
                                         </a>
-                                        <form action="{{ route('permissions.destroy', $permission->id) }}" method="post" class="d-inline">
+                                        <form action="{{ route('permissions.destroy', [$permission->id]) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete permission" onclick="confirm('Are You Sure You Want to Delete?') ? this.parentElement.submit() : ''">
