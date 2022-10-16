@@ -8,11 +8,19 @@ use App\Provider;
 use Carbon\Carbon;
 use App\SoldProduct;
 use App\Transaction;
+use App\Services\Deposit;
 use App\PaymentMethod;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+
+    protected $deposit;
+
+    public function __construct(Deposit $deposit)
+    {
+        $this->deposit = $deposit;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +35,7 @@ class TransactionController extends Controller
             'transfer' => 'Transfer',
             'deposit' => 'Deposit'
         ];
+
 
         $transactions = Transaction::latest()->paginate(25);
 
@@ -161,8 +170,12 @@ class TransactionController extends Controller
                     ->withStatus('Expense recorded successfully.');
 
             case 'payment':
-                if ($request->get('amount') > 0) {
+                // Check if the total available deposit amount is greater than the transaction amount
+                $depositBalance = $this->deposit->getDepositBalance();
+                if ($request->get('amount') > 0 && $request->get('amount')<= $depositBalance) {
                     $request->merge(['amount' => ((float) $request->get('amount') * (-1))]);
+                }else{
+                    return back()->withError('Amount Available is Less than the paid Amount. Remaining amount KES '.$depositBalance);
                 }
 
                 $transaction->create($request->all());

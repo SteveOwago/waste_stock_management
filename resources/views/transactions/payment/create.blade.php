@@ -14,6 +14,7 @@
                                 <a href="{{ route('transactions.type', ['type' => 'payment']) }}" class="btn btn-sm btn-primary">Back to List</a>
                             </div>
                         </div>
+                        @include('alerts.error')
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{ route('transactions.store') }}" autocomplete="off">
