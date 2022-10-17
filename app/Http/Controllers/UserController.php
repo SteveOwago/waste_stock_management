@@ -9,10 +9,10 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['role_or_permission:Admin|users-management']);
-    }
+//    public function __construct()
+//    {
+//        $this->middleware(['role_or_permission:Admin|users-management']);
+//    }
     /**
      * Display a listing of the users
      *
