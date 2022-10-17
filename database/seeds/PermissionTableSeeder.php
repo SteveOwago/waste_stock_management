@@ -40,6 +40,10 @@ class PermissionTableSeeder extends Seeder
                 'id' =>7,
                 'name' => 'clients-management',
             ],
+            [
+                'id' =>8,
+                'name' => 'permissions-management',
+            ],
         ];
         foreach ($permissions as $permission){
             \Spatie\Permission\Models\Permission::create($permission);
