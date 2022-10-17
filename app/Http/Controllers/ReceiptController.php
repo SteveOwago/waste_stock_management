@@ -18,6 +18,10 @@ class ReceiptController extends Controller
      * @param  Receipt  $model
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware(['role:Admin','permission:transaction-management|deposit-management']);
+    }
     public function index()
     {
         $receipts = Receipt::paginate(25);

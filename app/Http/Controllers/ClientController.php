@@ -13,7 +13,7 @@ class ClientController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Admin','permission:client-management']);
+        $this->middleware(['role:Admin','permission:clients-management']);
     }
     /**
      * Display a listing of the resource.

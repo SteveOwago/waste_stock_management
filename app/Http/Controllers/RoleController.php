@@ -13,6 +13,10 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware(['role:Admin','permission:permissions-management']);
+    }
     public function index()
     {
         $roles = Role::with('permissions')->get();;

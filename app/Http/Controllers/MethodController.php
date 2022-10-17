@@ -11,7 +11,7 @@ class MethodController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Admin','permission:account-management']);
+        $this->middleware(['role:Admin','permission:accounts-management']);
     }
     /**
      * Display a listing of the resource.
