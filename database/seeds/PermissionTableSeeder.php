@@ -26,7 +26,7 @@ class PermissionTableSeeder extends Seeder
             ],
             [
                 'id' =>4,
-                'name' => 'inventory_management',
+                'name' => 'inventory-management',
             ],
             [
                 'id' =>5,
