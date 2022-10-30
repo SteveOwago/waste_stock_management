@@ -12,7 +12,7 @@ class InventoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Admin','permission:inventory-management']);
+        $this->middleware(['role:Admin','permission:transaction-management']);
     }
     public function stats()
     {
